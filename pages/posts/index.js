@@ -5,7 +5,13 @@ import Link from "next/link";
 
 export async function getStaticProps() {
   const data = await fetch(
-    process.env.API_URL + "/posts/?key=" + process.env.API_KEY
+    process.env.API_URL + "/posts/?key=" + process.env.API_KEY,
+    {
+      headers: {
+        Accept: "application/json",
+        "User-Agent": "*",
+      },
+    }
   ).then((res) => res.json());
 
   const postCollection = data.posts.map((post) => post);

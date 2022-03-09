@@ -5,7 +5,13 @@ import Footer from "@components/Footer";
 
 export async function getStaticPaths() {
   const data = await fetch(
-    process.env.API_URL + "/posts/?key=" + process.env.API_KEY
+    process.env.API_URL + "/posts/?key=" + process.env.API_KEY,
+    {
+      headers: {
+        Accept: "application/json",
+        "User-Agent": "*",
+      },
+    }
   ).then((res) => res.json());
 
   const paths = data.posts.map((post) => ({
@@ -24,7 +30,13 @@ export async function getStaticProps({ params }) {
   const { slug } = params;
 
   const data = await fetch(
-    process.env.API_URL + `/posts/slug/${slug}/?key=` + process.env.API_KEY
+    process.env.API_URL + `/posts/slug/${slug}/?key=` + process.env.API_KEY,
+    {
+      headers: {
+        Accept: "application/json",
+        "User-Agent": "*",
+      },
+    }
   ).then((res) => res.json());
 
   const posts = data.posts.map((post) => post);
