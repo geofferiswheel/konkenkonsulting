@@ -28,7 +28,7 @@ export async function getStaticProps({ params }) {
   ).then((res) => res.json());
 
   const posts = data.posts.map((post) => post);
-  console.log(posts);
+
   const post = {
     slug,
     title: posts[0].title,
