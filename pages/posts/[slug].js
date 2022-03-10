@@ -5,7 +5,7 @@ import Footer from "@components/Footer";
 
 export async function getStaticPaths() {
   const data = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/posts/?key=${process.env.NEXT_PUBLIC_APIKEY}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/posts/?key=0af092ca3fb4baa94f35e73184`,
     {
       headers: {
         Accept: "application/json",
@@ -43,7 +43,7 @@ export async function getStaticProps({ params }) {
   const { slug } = params;
 
   const data = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/posts/slug/${slug}/?key=${process.env.NEXT_PUBLIC_APIKEY}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/posts/slug/${slug}/?key=0af092ca3fb4baa94f35e73184`,
     {
       headers: {
         Accept: "application/json",

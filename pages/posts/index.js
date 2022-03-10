@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export async function getStaticProps() {
   const data = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/posts/?key=${process.env.NEXT_PUBLIC_APIKEY}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/posts/?key=0af092ca3fb4baa94f35e73184`,
     {
       headers: {
         Accept: "application/json",
