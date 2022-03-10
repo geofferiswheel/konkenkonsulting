@@ -10,7 +10,7 @@ module.exports = {
       {
         test: /\.yml$/,
         type: "json",
-        use: "yaml-loader",
+        use: "js-yaml-loader",
       },
       {
         test: /\.svg$/,
