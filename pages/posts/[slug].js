@@ -17,6 +17,7 @@ export async function getStaticPaths() {
       if (res.ok) {
         return res.json();
       }
+      console.log("Response", res);
       throw new Error("Error Fetching Content");
     })
     .then((responseJson) => {
