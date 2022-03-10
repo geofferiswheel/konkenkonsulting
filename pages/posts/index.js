@@ -12,7 +12,19 @@ export async function getStaticProps() {
         "User-Agent": "*",
       },
     }
-  ).then((res) => res.json());
+  )
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      throw new Error("Error Fetching Content");
+    })
+    .then((responseJson) => {
+      return responseJson;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 
   const postCollection = data.posts.map((post) => post);
 

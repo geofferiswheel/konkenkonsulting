@@ -12,7 +12,19 @@ export async function getStaticPaths() {
         "User-Agent": "*",
       },
     }
-  ).then((res) => res.json());
+  )
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      throw new Error("Error Fetching Content");
+    })
+    .then((responseJson) => {
+      return responseJson;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 
   const paths = data.posts.map((post) => ({
     params: {
@@ -37,7 +49,19 @@ export async function getStaticProps({ params }) {
         "User-Agent": "*",
       },
     }
-  ).then((res) => res.json());
+  )
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      throw new Error("Error Fetching Content");
+    })
+    .then((responseJson) => {
+      return responseJson;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 
   const posts = data.posts.map((post) => post);
 
