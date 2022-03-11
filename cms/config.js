@@ -9,8 +9,8 @@ export default {
   public_folder: "img",
   collections: [
     {
-      name: "pages",
-      label: "Pages",
+      label: "Homepage",
+      name: "homepage",
       files: [
         {
           label: "Home",
@@ -34,6 +34,18 @@ export default {
             },
           ],
         },
+      ],
+    },
+    {
+      label: "Pages",
+      name: "pages",
+      folder: "content/pages",
+      create: true,
+      fields: [
+        { label: "Title", name: "title", widget: "string" },
+        { label: "Publish Date", name: "date", widget: "datetime" },
+        { label: "Featured Image", name: "thumbnail", widget: "image" },
+        { label: "Body", name: "body", widget: "markdown" },
       ],
     },
     {
