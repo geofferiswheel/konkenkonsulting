@@ -2,11 +2,11 @@
 import Head from "next/head";
 import Header from "@components/Header";
 import Footer from "@components/Footer";
-
-import { fetchPageContent } from "../lib/pages";
+import { getSortedPagesData } from "../lib/pages";
 
 export async function getStaticPaths() {
-  const paths = await fetchPageContent().map((it) => it.slug);
+  const pages = getSortedPagesData();
+  const paths = pages.map((it) => ({ params: { slug: it.slug } }));
   return {
     paths,
     fallback: false,
@@ -14,21 +14,10 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps = async ({ params }) => {
-  const slug = params.post;
-  const source = fs.readFileSync(slugToPostContent[slug].fullPath, "utf8");
-  const { content, data } = matter(source, {
-    engines: { yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }) },
-  });
-  const mdxSource = await renderToString(content, { components, scope: data });
+  const allPostsData = getSortedPagesData();
   return {
     props: {
-      title: data.title,
-      dateString: data.date,
-      slug: data.slug,
-      description: "",
-      tags: data.tags,
-      author: data.author,
-      source: mdxSource,
+      allPostsData,
     },
   };
 };

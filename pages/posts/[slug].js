@@ -2,32 +2,25 @@
 import Head from "next/head";
 import Header from "@components/Header";
 import Footer from "@components/Footer";
-
-import { fetchPostContent } from "../../lib/posts";
+import { getSortedPostsData } from "../../lib/posts";
 
 export async function getStaticPaths() {
-  const paths = await fetchPostContent().map((it) => it.slug);
+  const posts = getSortedPostsData();
+  const paths = posts.map((it) => ({ params: { slug: it.slug } }));
   return {
     paths,
     fallback: false,
   };
 }
+
+//TODO
+//Sort out getting the content from lib/posts instead of from the file for getStaticProps()
+//Sort out using our Markdown Loader
 export const getStaticProps = async ({ params }) => {
-  const slug = params.post;
-  const source = fs.readFileSync(slugToPostContent[slug].fullPath, "utf8");
-  const { content, data } = matter(source, {
-    engines: { yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }) },
-  });
-  const mdxSource = await renderToString(content, { components, scope: data });
+  const allPostsData = getSortedPostsData();
   return {
     props: {
-      title: data.title,
-      dateString: data.date,
-      slug: data.slug,
-      description: "",
-      tags: data.tags,
-      author: data.author,
-      source: mdxSource,
+      allPostsData,
     },
   };
 };
@@ -44,6 +37,7 @@ export default function SinglePost({
     <>
       <Head />
       <Header />
+      {title}
       <Footer />
     </>
   );
