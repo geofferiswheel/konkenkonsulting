@@ -2,7 +2,8 @@
 import Head from "next/head";
 import Header from "@components/Header";
 import Footer from "@components/Footer";
-import { getSortedPagesData } from "../lib/pages";
+import ReactMarkdown from "react-markdown";
+import { getSortedPagesData, getPageDataBySlug } from "../lib/pages";
 
 export async function getStaticPaths() {
   const pages = getSortedPagesData();
@@ -14,26 +15,27 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps = async ({ params }) => {
-  const allPostsData = getSortedPagesData();
+  const pageData = getPageDataBySlug(params.slug, [
+    "title",
+    "image",
+    "slug",
+    "content",
+  ]);
   return {
     props: {
-      allPostsData,
+      page: {
+        ...pageData,
+      },
     },
   };
 };
 
-export default function SinglePage({
-  title,
-  dateString,
-  description,
-  tags,
-  author,
-  source,
-}) {
+export default function Page({ page }) {
   return (
     <>
       <Head />
-      <Header />
+      <Header title={page.title}></Header>
+      <ReactMarkdown>{page.content}</ReactMarkdown>
       <Footer />
     </>
   );

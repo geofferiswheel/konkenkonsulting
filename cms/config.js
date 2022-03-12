@@ -43,7 +43,12 @@ export default {
       fields: [
         { label: "Title", name: "title", widget: "string" },
         { label: "Slug", name: "slug", widget: "string" },
-        { label: "Publish Date", name: "date", widget: "datetime" },
+        {
+          label: "Publish Date",
+          name: "date",
+          widget: "datetime",
+          format: "YYYY-MM-DD-HH-MM",
+        },
         { label: "Featured Image", name: "thumbnail", widget: "image" },
         { label: "Body", name: "body", widget: "markdown" },
       ],

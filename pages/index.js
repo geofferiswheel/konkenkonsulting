@@ -6,7 +6,7 @@ import Footer from "@components/Footer";
 import { attributes, react as HomeContent } from "../content/home.md";
 
 export default function Home() {
-  let { title, cats } = attributes;
+  let { title } = attributes;
   return (
     <>
       <Head>
