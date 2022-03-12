@@ -22,6 +22,14 @@ export default {
               widget: "string",
             },
             {
+              label: "Publish Date",
+              name: "date",
+              widget: "datetime",
+              date_format: "YYYY-MM-DD",
+              time_format: "HH:mm",
+              format: "YYYY-MM-DD HH:mm",
+            },
+            {
               label: "Description",
               name: "description",
               widget: "markdown",
