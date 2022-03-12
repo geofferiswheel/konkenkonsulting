@@ -3,11 +3,11 @@ import Head from "next/head";
 import Header from "@components/Header";
 import Footer from "@components/Footer";
 import ReactMarkdown from "react-markdown";
-import { getSortedPagesData, getPageDataBySlug } from "../lib/pages";
+import { getSlugs, getPageDataBySlug } from "../lib/pages";
 
 export async function getStaticPaths() {
-  const pages = getSortedPagesData();
-  const paths = pages.map((it) => ({ params: { slug: it.slug } }));
+  const paths = getSlugs();
+  console.log(paths);
   return {
     paths,
     fallback: false,

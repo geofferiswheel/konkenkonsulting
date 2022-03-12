@@ -3,11 +3,10 @@ import Head from "next/head";
 import Header from "@components/Header";
 import Footer from "@components/Footer";
 import ReactMarkdown from "react-markdown";
-import { getSortedPostsData, getPostDataBySlug } from "../../lib/posts";
+import { getSlugs, getPostDataBySlug } from "../../lib/posts";
 
 export async function getStaticPaths() {
-  const posts = getSortedPostsData();
-  const paths = posts.map((it) => ({ params: { slug: it.slug } }));
+  const paths = getSlugs();
   return {
     paths,
     fallback: false,
