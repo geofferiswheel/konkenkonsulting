@@ -22,6 +22,7 @@
   "devDependencies": {
     "@babel/core": "^7.17.5",
     "@babel/preset-react": "^7.16.7",
-    "@netlify/plugin-nextjs": "^4.2.5"
+    "@netlify/plugin-nextjs": "^4.2.5",
+    "contentful": "^9.1.13"
   }
 }
