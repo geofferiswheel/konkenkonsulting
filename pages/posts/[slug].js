@@ -35,9 +35,13 @@ export const getStaticProps = async ({ params }) => {
 export default function Post({ post }) {
   return (
     <>
-      <Head />
-      <Header title={post.title}></Header>
-      <ReactMarkdown>{post.content}</ReactMarkdown>
+      <Head></Head>
+      <main>
+        <div className="container">
+          <Header title={post.title}></Header>
+          <ReactMarkdown>{post.content}</ReactMarkdown>
+        </div>
+      </main>
       <Footer />
     </>
   );

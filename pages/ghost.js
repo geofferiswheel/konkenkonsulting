@@ -21,21 +21,22 @@ export async function getStaticProps() {
 
 export default function Ghost({ posts }) {
   return (
-    <div className="container">
+    <>
       <Head>
         <title>Next + Contentful Starter</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Header title="NextJS + Ghost CMS API" />
-        <div className="post-container">
-          {posts.map((post) => {
-            return <GhostPreview post={post} key={post.id} />;
-          })}
+        <div className="container">
+          <Header title="NextJS + Ghost CMS API" />
+          <div className="post-container">
+            {posts.map((post) => {
+              return <GhostPreview post={post} key={post.id} />;
+            })}
+          </div>
         </div>
       </main>
-
       <Footer />
-    </div>
+    </>
   );
 }

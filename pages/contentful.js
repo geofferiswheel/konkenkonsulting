@@ -6,28 +6,6 @@ import Header from "@components/Header";
 import Footer from "@components/Footer";
 import Contentful from "@components/Contentful";
 
-export default function Home({ posts }) {
-  return (
-    <div className="container">
-      <Head>
-        <title>Next + Contentful Starter</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main>
-        <Header title="Next + Contentful Starter" />
-        <div className="post-container">
-          {posts.map((p) => {
-            return <Contentful post={p} />;
-          })}
-        </div>
-      </main>
-
-      <Footer />
-    </div>
-  );
-}
-
 export async function getStaticProps() {
   const res = await fetchEntries();
   const posts = await res.map((p) => {
@@ -39,4 +17,29 @@ export async function getStaticProps() {
       posts,
     },
   };
+}
+
+export default function Home({ posts }) {
+  return (
+    <>
+      <Head>
+        <title>Next + Contentful Starter</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <main>
+        <div className="container">
+          <Header title="Next + Contentful Starter" />
+          <div className="post-container">
+            {posts.map((p, index) => {
+              let key = `contentful-post-${index}`;
+              return <Contentful post={p} key={key} />;
+            })}
+          </div>
+        </div>
+      </main>
+
+      <Footer />
+    </>
+  );
 }

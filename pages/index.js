@@ -15,10 +15,11 @@ export default function Home() {
       </Head>
 
       <main>
-        <Header title={title} />
-        <HomeContent />
+        <div className="container">
+          <Header title={title} />
+          <HomeContent />
+        </div>
       </main>
-
       <Footer />
     </>
   );

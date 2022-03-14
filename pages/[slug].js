@@ -33,8 +33,12 @@ export default function Page({ page }) {
   return (
     <>
       <Head />
-      <Header title={page.title}></Header>
-      <ReactMarkdown>{page.content}</ReactMarkdown>
+      <main>
+        <div className="container">
+          <Header title={page.title}></Header>
+          <ReactMarkdown>{page.content}</ReactMarkdown>
+        </div>
+      </main>
       <Footer />
     </>
   );
