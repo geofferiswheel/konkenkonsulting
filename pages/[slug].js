@@ -7,7 +7,6 @@ import { getSlugs, getPageDataBySlug } from "../lib/pages";
 
 export async function getStaticPaths() {
   const paths = getSlugs();
-  console.log(paths);
   return {
     paths,
     fallback: false,

@@ -2,7 +2,6 @@ import Subheader from "@components/Header";
 import Link from "next/link";
 
 export function PostPreview({ post }) {
-  console.log("Preview", post);
   return (
     <div className="post-container">
       <Subheader title={post.title} />
