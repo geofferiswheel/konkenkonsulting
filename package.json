@@ -23,6 +23,7 @@
     "@babel/core": "^7.17.5",
     "@babel/preset-react": "^7.16.7",
     "@netlify/plugin-nextjs": "^4.2.5",
+    "@tryghost/content-api": "^1.7.0",
     "contentful": "^9.1.13"
   }
 }

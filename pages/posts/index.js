@@ -15,13 +15,15 @@ export async function getStaticProps() {
 
 export default function Posts({ posts }) {
   return (
-    <>
-      <Head />
-      <Header />
-      {posts.map((post) => {
-        return <PostPreview post={post} key={post.key} />;
-      })}
+    <div className="container">
+      <Head></Head>
+      <main>
+        <Header title="NextJS + Netlify CMS" />
+        {posts.map((post) => {
+          return <PostPreview post={post} key={post.key} />;
+        })}
+      </main>
       <Footer />
-    </>
+    </div>
   );
 }

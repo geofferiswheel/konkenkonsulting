@@ -4,7 +4,7 @@ import { fetchEntries } from "../lib/contentful";
 
 import Header from "@components/Header";
 import Footer from "@components/Footer";
-import Post from "@components/Post";
+import Contentful from "@components/Contentful";
 
 export default function Home({ posts }) {
   return (
@@ -16,59 +16,14 @@ export default function Home({ posts }) {
 
       <main>
         <Header title="Next + Contentful Starter" />
-        <div className="posts">
+        <div className="post-container">
           {posts.map((p) => {
-            return (
-              <Post
-                key={p.date}
-                date={p.date}
-                image={p.image.fields}
-                title={p.title}
-              />
-            );
+            return <Contentful post={p} />;
           })}
         </div>
       </main>
 
       <Footer />
-
-      <style jsx>{`
-        .container {
-          height: 100vh;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
-        main {
-          padding: 5rem 0;
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
-        .posts {
-          display: flex;
-        }
-      `}</style>
-
-      <style jsx global>{`
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
-        }
-
-        * {
-          box-sizing: border-box;
-        }
-      `}</style>
     </div>
   );
 }
